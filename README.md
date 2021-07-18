@@ -70,7 +70,7 @@ The code will look like this.
 
 ```dart:lib/main.dart
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -79,12 +79,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  // You can set your states here.
-
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (context, watch, child) {
+    return Consumer(
+        builder: (BuildContext context, ScopedReader watch, Widget? child) {
       final int counter = watch(counterProvider);
       final Counter counterNotifier = watch(counterProvider.notifier);
 
@@ -96,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 'You have pushed the button this many times:',
               ),
               Text(
@@ -109,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: counterNotifier.increment,
           tooltip: 'Increment',
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
       );
     });
@@ -149,7 +147,7 @@ class MyHomePage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'You have pushed the button this many times:',
             ),
             Text(
@@ -162,7 +160,7 @@ class MyHomePage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: counterNotifier.increment,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
